@@ -47,19 +47,11 @@ Total: **$77**
 Getting Started
 ===
 
-With your Pi assembled it's time to write an OpenWRT image to your microSD card. One option is to use [wulfy23's popular build](https://github.com/wulfy23/rpi4) which should get you up and running with minimum fuss. Another is to use the stock image OpenWRT provides; however the stock image lacks certain packages which are necessary to enable the USB dongle. The last, and the one we'll explore here, is to build a customized image with the needed packages. Luckily for us the ASU (**A**ttended **S**ys**U**pgrade) project features a handy web frontend where we can do just that.
+With your Pi assembled it's time to write an OpenWRT image to your microSD card. One option is to use [wulfy23's popular build](https://github.com/wulfy23/rpi4) which should get you up and running with minimum fuss. Another is to use the stock image OpenWRT provides; however the stock image lacks a driver for the USB dongle. The last, and the one we'll explore here, is to build a customized image with the needed packages. Luckily for us the ASU (**A**ttended **S**ys**U**pgrade) project features a handy web frontend where we can do just that.
 
-To get started, navigate to the ASU server at https://asu.aparcar.org/. You should see a webpage that looks like this:
+To get started, navigate to the ASU server at https://asu.aparcar.org/. Start typing `Raspberry Pi 4` into the search field and select `Raspberry Pi 4B/400/4CM (64bit)`. Now expand the `Customize` accordion.
 
-**INSERT SCREENSHOTS**
-
-Start typing `Raspberry Pi 4` into the search field and select `Raspberry Pi 4B/400/4CM (64bit)`. Now expand the `Customize` accordion:
-
-
-
-We are now free to add additional packages to our firmware image. Nice! There's really only one that is absolutely necessary to get this thing off the ground: `kmod-usb-net-rtl8152`. Add that to the list of packages like so:
-
-You'll notice that we can also provide a custom script to run the first time the router boots, e.g. to make initial config changes. A future version of this guide may elaborate on this but for now go ahead and leave it blank.
+We are now free to add additional packages to our firmware image. Nice! There's really only one that is absolutely necessary to get this thing off the ground: `kmod-usb-net-rtl8152`. Go ahead and add that to the end of the list.
 
 Click `Request Build` and go top up your coffee while you wait for your image to be built. Once it's ready, download the `FACTORY (EXT4)` image. Decompress the gzipped image and finally flash it to your microSD card using the tool of your choice.
 
@@ -78,7 +70,7 @@ Click back to the `Interfaces` tab. Add a new interface called `WAN` using the c
 
 > If your ISP requires your WAN device to communicate over a specific VLAN, use the "custom" device field to provide the VLAN ID in the form `DEVICE.VLANID`, e.g. `eth1.10`.
 
-You should now be online!
+You should now be connected to the Internet!
 
 Maximizing Performance
 ===
@@ -118,7 +110,7 @@ arm_freq=2000
 Putting it all together
 ===
 
-My setup with above optimizations applied makes light work of my symmetric gigabit connection, even without the benefit of software or hardware offloading. Here are a handful of [Ookla](https://www.speedtest.net/) speedtests and [Waveform](https://www.waveform.com/tools/bufferbloat) bufferbloat tests to give you an idea of what you can expect both with and without SQM enabled.
+Here are a handful of [Ookla](https://www.speedtest.net/) speedtests and [Waveform](https://www.waveform.com/tools/bufferbloat) bufferbloat tests to give you an idea of what you can expect both with and without SQM enabled.
 
 Without SQM
 ---
@@ -128,7 +120,7 @@ Without SQM
 With SQM
 ---
 
-SQM settings:
+Settings:
 
 ```ini
 sqm.eth1=queue
