@@ -1,0 +1,1 @@
+Hello and welcome to my blog! It's nothing fancy for now but I wanted to get my writing out there while I work on a permanent hosting solution.
