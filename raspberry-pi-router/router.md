@@ -130,7 +130,7 @@ With SQM
 
 SQM settings:
 
-```
+```ini
 sqm.eth1=queue
 sqm.eth1.qdisc='cake'
 sqm.eth1.debug_logging='0'
